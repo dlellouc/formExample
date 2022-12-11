@@ -70,12 +70,14 @@ submitBtn.type = 'submit';
 submitBtn.innerText = 'Submit';
 submitBtn.addEventListener('click', function(e) {
     let formFieldEls = document.querySelectorAll('.formFieldEl');
+    let submittedForm = {};
     formFieldEls.forEach(function(formFieldEl) {
         if (formFieldEl.type !== 'checkbox') {
-            console.log(formFieldEl.name, formFieldEl.value);
+            submittedForm[formFieldEl.name] = formFieldEl.value;
         } else {
-            console.log(formFieldEl.name, formFieldEl.value, formFieldEl.checked);
+            submittedForm[formFieldEl.name + '-' + formFieldEl.value] = formFieldEl.checked;
         }
     })
+    console.log(submittedForm);
 });
 document.body.append(submitBtn);
